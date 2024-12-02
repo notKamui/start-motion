@@ -3,14 +3,14 @@
   "module": "index.ts",
   "type": "module",
   "scripts": {
-    "dev": "vinxi dev",
-    "build": "vinxi build",
-    "start": "vinxi start"
+    "dev": "bunx -b vinxi dev",
+    "build": "bunx -b vinxi build",
+    "start": "bunx -b vinxi start"
   },
   "devDependencies": {
     "@types/bun": "latest",
-    "@types/react": "^18.3.12",
-    "@types/react-dom": "^18.3.1",
+    "@types/react": "npm:types-react@rc",
+    "@types/react-dom": "npm:types-react-dom@rc",
     "@vitejs/plugin-react": "^4.3.4"
   },
   "peerDependencies": {
@@ -26,5 +26,9 @@
   },
   "trustedDependencies": [
     "@parcel/watcher"
-  ]
+  ],
+  "overrides": {
+    "@types/react": "npm:types-react@rc",
+    "@types/react-dom": "npm:types-react-dom@rc"
+  }
 }

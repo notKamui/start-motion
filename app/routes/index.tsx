@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
-import { AnimatedText } from "../components/animated-text";
 
 export const Route = createFileRoute("/")({
   component: RouteComponent,
@@ -8,11 +8,20 @@ export const Route = createFileRoute("/")({
 
 function RouteComponent() {
   const [show, setShow] = useState(false);
-  return (
-    <div>
-      Hello "/"!
-      <button onClick={() => setShow((s) => !s)}>Toggle</button>
-      <AnimatedText text="Hello, world!" show={show} />
-    </div>
-  );
+
+  return <div>
+    <button onClick={() => setShow(!show)}>Toggle</button>
+    <AnimatePresence>
+      {show && (
+        <motion.p
+          key="text"
+          exit={{ x: 20, opacity: 0 }}
+          initial={{ x: -20, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+        >
+          Hello
+        </motion.p>
+      )}
+    </AnimatePresence>
+  </div>;
 }
