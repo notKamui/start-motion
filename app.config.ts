@@ -11,7 +11,12 @@ const config = defineConfig({
         projects: ['./tsconfig.json'],
       }),
     ],
+    optimizeDeps: {
+      exclude: ['@tanstack/react-router-devtools'],
+    }
   },
+  server: {
+  }
 })
 
 export default config
